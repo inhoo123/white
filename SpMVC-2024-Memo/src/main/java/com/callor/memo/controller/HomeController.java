@@ -26,7 +26,6 @@ public class HomeController {
 		List<MemoVO> memoList = memoDao.selectAll();
 		model.addAttribute("MEMO_LIST", memoList);
 		return "home";
-
 	}
 
 	// 메모 작성
@@ -38,19 +37,16 @@ public class HomeController {
 	}
 
 	// 메모 디테일
-	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	@RequestMapping(value="/detail", method=RequestMethod.GET)
 	public String detail(String m_seq, Model model) {
-		String memoVO = MemoDao.findById(m_seq);
+		MemoVO memoVO = memoDao.findById(m_seq);
 		model.addAttribute("MEMO", memoVO);
 		return "memo/detail";
 	}
-
-	// 메모 업데이트
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	@RequestMapping(value="/update", method=RequestMethod.GET)
 	public String update(int m_seq, MemoVO memoVO) {
 		memoVO.setM_seq(m_seq);
-		List<MemoVO> result = memoDao.update(m_seq);
-		return "home";
+		int result = memoDao.Update(memoVO);
+		return "memo/update";
 	}
-
 }

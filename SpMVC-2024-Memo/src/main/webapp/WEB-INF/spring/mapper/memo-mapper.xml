@@ -11,4 +11,8 @@
 		#{m_seq},#{m_author},CURDATE(),CURTIME(),#{m_title},#{m_memo},#{m_image}
 		)
 	</insert>
+<update id="update">
+    UPDATE m_memo SET m_title = #{title}, m_memo = #{m_memo} WHERE m_seq = #{m_seq}
+</update>
+
 </mapper> 

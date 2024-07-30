@@ -10,15 +10,12 @@ public interface MemoDao {
 	@Select("SELECT * FROM m_memo ORDER BY m_seq")
 	public List<MemoVO> selectAll();
 
-	@Select("UPDATE m_title,m_memo SET #{title},#{m_memo} WHERE m_seq ")
-	public List<MemoVO> update(int m_seq);
+	
 
-	@Select("SELECT * FROM m_memo WHERE m_seq")
-	public static String findById(String m_seq) {
-		
-		return "memo/detail";
-	}
+	@Select("SELECT * FROM m_memo WHERE m_seq =#{m_seq}")
+	public MemoVO findById(String m_seq);
 
 	public int insert(MemoVO memoVO);
-
+	public int Update(MemoVO memoVO);
+	
 }
